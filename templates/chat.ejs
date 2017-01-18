@@ -1,0 +1,22 @@
+<% layout('layout/page') -%>
+<% block('title', "Чат") -%>
+
+<script src="/vendor/bower_components/socket.io-client/dist/socket.io.js"></script>
+<script src="/js/chat/main.js"></script>
+
+<div id="room">
+  <ul class="list-unstyled"></ul>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <form class="form-horizontal">
+          <div class="input-group">
+            <input class="form-control" type="text" autocomplete="off" autofocus placeholder="Сообщение...">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">Отправить</button>
+            </span>
+          </div>
+       </form>
+    </div>
+  </div>
+</div>
+

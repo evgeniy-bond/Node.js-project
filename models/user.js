@@ -25,12 +25,12 @@ let schema = new Schema({
     }
 });
 
-schema.methods.encryptPassword = password => {
+schema.methods.encryptPassword = function(password) {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
 };
 
 schema.virtual('password')
-    .set(password => {
+    .set(function(password) {
         this._plainPassword = password;
         this.salt = Math.random() + '';
         this.hashedPassword = this.encryptPassword(password);
@@ -40,17 +40,17 @@ schema.virtual('password')
     });
 
 
-schema.methods.checkPassword = password => {
+schema.methods.checkPassword = function (password) {
     return this.encryptPassword(password) === this.hashedPassword;
 };
 
-schema.statics.authorize = (username, password, callback) => {
+schema.statics.authorize = function (username, password, callback) {
     let User = this;
     async.waterfall([
-        callback => {
+        function(callback) {
             User.findOne({ username: username }, callback);
         },
-        (user, callback) => {
+        function(user, callback) {
             if (user) {
                 if (user.checkPassword(password)) {
                     callback(null, user);
@@ -59,7 +59,7 @@ schema.statics.authorize = (username, password, callback) => {
                 }
             } else {
                 let user = new User({ username: username, password: password });
-                user.save(err => {
+                user.save(function(err) {
                     if (err) return callback(err);
                     callback(null, user);
                 });

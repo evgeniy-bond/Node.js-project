@@ -1,0 +1,41 @@
+body {
+  margin-bottom: 80px;
+}
+.container[role="main"] {
+  padding-bottom: 60px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 80px;
+}
+
+.footer .navbar {
+  min-height: 80px;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.footer__list {
+  padding: 10px;
+}
+
+.footer__list li {
+  display: inline-block;
+  margin: 0 10px;
+}
